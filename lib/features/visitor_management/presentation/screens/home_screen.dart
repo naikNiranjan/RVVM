@@ -46,6 +46,17 @@ class VisitorManagementScreen extends ConsumerWidget {
                     ),
                   ),
                   DashboardCard(
+                    title: 'Register',
+                    subtitle: 'New visitor entry',
+                    icon: Icons.person_add,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RegisterScreen(),
+                      ),
+                    ),
+                  ),
+                  DashboardCard(
                     title: 'Cab Entry',
                     subtitle: 'Register campus cabs',
                     icon: Icons.local_taxi,
@@ -86,17 +97,6 @@ class VisitorManagementScreen extends ConsumerWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const DocumentScreen(),
-                      ),
-                    ),
-                  ),
-                  DashboardCard(
-                    title: 'Register',
-                    subtitle: 'New visitor entry',
-                    icon: Icons.person_add,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RegisterScreen(),
                       ),
                     ),
                   ),

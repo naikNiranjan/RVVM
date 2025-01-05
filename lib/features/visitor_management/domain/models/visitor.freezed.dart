@@ -21,19 +21,20 @@ Visitor _$VisitorFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Visitor {
   String get name => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
-  String get purpose => throw _privateConstructorUsedError;
-  String get department => throw _privateConstructorUsedError;
-  String get host => throw _privateConstructorUsedError;
-  String get documentType => throw _privateConstructorUsedError;
-  String? get address => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get contactNumber => throw _privateConstructorUsedError;
   String? get vehicleNumber => throw _privateConstructorUsedError;
-  String? get visitorPhotoPath => throw _privateConstructorUsedError;
-  String? get documentPath => throw _privateConstructorUsedError;
-  int get visitorCount => throw _privateConstructorUsedError;
-  DateTime? get checkInTime => throw _privateConstructorUsedError;
-  DateTime? get checkOutTime => throw _privateConstructorUsedError;
-  bool get isCheckedIn => throw _privateConstructorUsedError;
+  String get purposeOfVisit => throw _privateConstructorUsedError;
+  String? get photoUrl => throw _privateConstructorUsedError;
+  int get numberOfVisitors => throw _privateConstructorUsedError;
+  String get whomToMeet => throw _privateConstructorUsedError;
+  String get department => throw _privateConstructorUsedError;
+  String get documentType => throw _privateConstructorUsedError;
+  String? get documentUrl => throw _privateConstructorUsedError;
+  bool get sendNotification => throw _privateConstructorUsedError;
+  bool get isApproved => throw _privateConstructorUsedError;
+  DateTime? get entryTime => throw _privateConstructorUsedError;
+  DateTime? get exitTime => throw _privateConstructorUsedError;
 
   /// Serializes this Visitor to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,19 +52,20 @@ abstract class $VisitorCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String phone,
-      String purpose,
-      String department,
-      String host,
-      String documentType,
-      String? address,
+      String address,
+      String contactNumber,
       String? vehicleNumber,
-      String? visitorPhotoPath,
-      String? documentPath,
-      int visitorCount,
-      DateTime? checkInTime,
-      DateTime? checkOutTime,
-      bool isCheckedIn});
+      String purposeOfVisit,
+      String? photoUrl,
+      int numberOfVisitors,
+      String whomToMeet,
+      String department,
+      String documentType,
+      String? documentUrl,
+      bool sendNotification,
+      bool isApproved,
+      DateTime? entryTime,
+      DateTime? exitTime});
 }
 
 /// @nodoc
@@ -82,77 +84,82 @@ class _$VisitorCopyWithImpl<$Res, $Val extends Visitor>
   @override
   $Res call({
     Object? name = null,
-    Object? phone = null,
-    Object? purpose = null,
-    Object? department = null,
-    Object? host = null,
-    Object? documentType = null,
-    Object? address = freezed,
+    Object? address = null,
+    Object? contactNumber = null,
     Object? vehicleNumber = freezed,
-    Object? visitorPhotoPath = freezed,
-    Object? documentPath = freezed,
-    Object? visitorCount = null,
-    Object? checkInTime = freezed,
-    Object? checkOutTime = freezed,
-    Object? isCheckedIn = null,
+    Object? purposeOfVisit = null,
+    Object? photoUrl = freezed,
+    Object? numberOfVisitors = null,
+    Object? whomToMeet = null,
+    Object? department = null,
+    Object? documentType = null,
+    Object? documentUrl = freezed,
+    Object? sendNotification = null,
+    Object? isApproved = null,
+    Object? entryTime = freezed,
+    Object? exitTime = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
-      purpose: null == purpose
-          ? _value.purpose
-          : purpose // ignore: cast_nullable_to_non_nullable
+      contactNumber: null == contactNumber
+          ? _value.contactNumber
+          : contactNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      vehicleNumber: freezed == vehicleNumber
+          ? _value.vehicleNumber
+          : vehicleNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      purposeOfVisit: null == purposeOfVisit
+          ? _value.purposeOfVisit
+          : purposeOfVisit // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numberOfVisitors: null == numberOfVisitors
+          ? _value.numberOfVisitors
+          : numberOfVisitors // ignore: cast_nullable_to_non_nullable
+              as int,
+      whomToMeet: null == whomToMeet
+          ? _value.whomToMeet
+          : whomToMeet // ignore: cast_nullable_to_non_nullable
               as String,
       department: null == department
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
               as String,
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
       documentType: null == documentType
           ? _value.documentType
           : documentType // ignore: cast_nullable_to_non_nullable
               as String,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
+      documentUrl: freezed == documentUrl
+          ? _value.documentUrl
+          : documentUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      vehicleNumber: freezed == vehicleNumber
-          ? _value.vehicleNumber
-          : vehicleNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      visitorPhotoPath: freezed == visitorPhotoPath
-          ? _value.visitorPhotoPath
-          : visitorPhotoPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      documentPath: freezed == documentPath
-          ? _value.documentPath
-          : documentPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      visitorCount: null == visitorCount
-          ? _value.visitorCount
-          : visitorCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      checkInTime: freezed == checkInTime
-          ? _value.checkInTime
-          : checkInTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      checkOutTime: freezed == checkOutTime
-          ? _value.checkOutTime
-          : checkOutTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      isCheckedIn: null == isCheckedIn
-          ? _value.isCheckedIn
-          : isCheckedIn // ignore: cast_nullable_to_non_nullable
+      sendNotification: null == sendNotification
+          ? _value.sendNotification
+          : sendNotification // ignore: cast_nullable_to_non_nullable
               as bool,
+      isApproved: null == isApproved
+          ? _value.isApproved
+          : isApproved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      entryTime: freezed == entryTime
+          ? _value.entryTime
+          : entryTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      exitTime: freezed == exitTime
+          ? _value.exitTime
+          : exitTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -166,19 +173,20 @@ abstract class _$$VisitorImplCopyWith<$Res> implements $VisitorCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String phone,
-      String purpose,
-      String department,
-      String host,
-      String documentType,
-      String? address,
+      String address,
+      String contactNumber,
       String? vehicleNumber,
-      String? visitorPhotoPath,
-      String? documentPath,
-      int visitorCount,
-      DateTime? checkInTime,
-      DateTime? checkOutTime,
-      bool isCheckedIn});
+      String purposeOfVisit,
+      String? photoUrl,
+      int numberOfVisitors,
+      String whomToMeet,
+      String department,
+      String documentType,
+      String? documentUrl,
+      bool sendNotification,
+      bool isApproved,
+      DateTime? entryTime,
+      DateTime? exitTime});
 }
 
 /// @nodoc
@@ -195,100 +203,105 @@ class __$$VisitorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? phone = null,
-    Object? purpose = null,
-    Object? department = null,
-    Object? host = null,
-    Object? documentType = null,
-    Object? address = freezed,
+    Object? address = null,
+    Object? contactNumber = null,
     Object? vehicleNumber = freezed,
-    Object? visitorPhotoPath = freezed,
-    Object? documentPath = freezed,
-    Object? visitorCount = null,
-    Object? checkInTime = freezed,
-    Object? checkOutTime = freezed,
-    Object? isCheckedIn = null,
+    Object? purposeOfVisit = null,
+    Object? photoUrl = freezed,
+    Object? numberOfVisitors = null,
+    Object? whomToMeet = null,
+    Object? department = null,
+    Object? documentType = null,
+    Object? documentUrl = freezed,
+    Object? sendNotification = null,
+    Object? isApproved = null,
+    Object? entryTime = freezed,
+    Object? exitTime = freezed,
   }) {
     return _then(_$VisitorImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
-      purpose: null == purpose
-          ? _value.purpose
-          : purpose // ignore: cast_nullable_to_non_nullable
+      contactNumber: null == contactNumber
+          ? _value.contactNumber
+          : contactNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      vehicleNumber: freezed == vehicleNumber
+          ? _value.vehicleNumber
+          : vehicleNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      purposeOfVisit: null == purposeOfVisit
+          ? _value.purposeOfVisit
+          : purposeOfVisit // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numberOfVisitors: null == numberOfVisitors
+          ? _value.numberOfVisitors
+          : numberOfVisitors // ignore: cast_nullable_to_non_nullable
+              as int,
+      whomToMeet: null == whomToMeet
+          ? _value.whomToMeet
+          : whomToMeet // ignore: cast_nullable_to_non_nullable
               as String,
       department: null == department
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
               as String,
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
       documentType: null == documentType
           ? _value.documentType
           : documentType // ignore: cast_nullable_to_non_nullable
               as String,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
+      documentUrl: freezed == documentUrl
+          ? _value.documentUrl
+          : documentUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      vehicleNumber: freezed == vehicleNumber
-          ? _value.vehicleNumber
-          : vehicleNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      visitorPhotoPath: freezed == visitorPhotoPath
-          ? _value.visitorPhotoPath
-          : visitorPhotoPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      documentPath: freezed == documentPath
-          ? _value.documentPath
-          : documentPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      visitorCount: null == visitorCount
-          ? _value.visitorCount
-          : visitorCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      checkInTime: freezed == checkInTime
-          ? _value.checkInTime
-          : checkInTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      checkOutTime: freezed == checkOutTime
-          ? _value.checkOutTime
-          : checkOutTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      isCheckedIn: null == isCheckedIn
-          ? _value.isCheckedIn
-          : isCheckedIn // ignore: cast_nullable_to_non_nullable
+      sendNotification: null == sendNotification
+          ? _value.sendNotification
+          : sendNotification // ignore: cast_nullable_to_non_nullable
               as bool,
+      isApproved: null == isApproved
+          ? _value.isApproved
+          : isApproved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      entryTime: freezed == entryTime
+          ? _value.entryTime
+          : entryTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      exitTime: freezed == exitTime
+          ? _value.exitTime
+          : exitTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class _$VisitorImpl implements _Visitor {
   const _$VisitorImpl(
       {required this.name,
-      required this.phone,
-      required this.purpose,
-      required this.department,
-      required this.host,
-      required this.documentType,
-      this.address,
+      required this.address,
+      required this.contactNumber,
       this.vehicleNumber,
-      this.visitorPhotoPath,
-      this.documentPath,
-      this.visitorCount = 1,
-      this.checkInTime,
-      this.checkOutTime,
-      this.isCheckedIn = false});
+      required this.purposeOfVisit,
+      this.photoUrl,
+      required this.numberOfVisitors,
+      required this.whomToMeet,
+      required this.department,
+      required this.documentType,
+      this.documentUrl,
+      this.sendNotification = false,
+      this.isApproved = false,
+      this.entryTime,
+      this.exitTime});
 
   factory _$VisitorImpl.fromJson(Map<String, dynamic> json) =>
       _$$VisitorImplFromJson(json);
@@ -296,37 +309,39 @@ class _$VisitorImpl implements _Visitor {
   @override
   final String name;
   @override
-  final String phone;
+  final String address;
   @override
-  final String purpose;
-  @override
-  final String department;
-  @override
-  final String host;
-  @override
-  final String documentType;
-  @override
-  final String? address;
+  final String contactNumber;
   @override
   final String? vehicleNumber;
   @override
-  final String? visitorPhotoPath;
+  final String purposeOfVisit;
   @override
-  final String? documentPath;
+  final String? photoUrl;
+  @override
+  final int numberOfVisitors;
+  @override
+  final String whomToMeet;
+  @override
+  final String department;
+  @override
+  final String documentType;
+  @override
+  final String? documentUrl;
   @override
   @JsonKey()
-  final int visitorCount;
-  @override
-  final DateTime? checkInTime;
-  @override
-  final DateTime? checkOutTime;
+  final bool sendNotification;
   @override
   @JsonKey()
-  final bool isCheckedIn;
+  final bool isApproved;
+  @override
+  final DateTime? entryTime;
+  @override
+  final DateTime? exitTime;
 
   @override
   String toString() {
-    return 'Visitor(name: $name, phone: $phone, purpose: $purpose, department: $department, host: $host, documentType: $documentType, address: $address, vehicleNumber: $vehicleNumber, visitorPhotoPath: $visitorPhotoPath, documentPath: $documentPath, visitorCount: $visitorCount, checkInTime: $checkInTime, checkOutTime: $checkOutTime, isCheckedIn: $isCheckedIn)';
+    return 'Visitor(name: $name, address: $address, contactNumber: $contactNumber, vehicleNumber: $vehicleNumber, purposeOfVisit: $purposeOfVisit, photoUrl: $photoUrl, numberOfVisitors: $numberOfVisitors, whomToMeet: $whomToMeet, department: $department, documentType: $documentType, documentUrl: $documentUrl, sendNotification: $sendNotification, isApproved: $isApproved, entryTime: $entryTime, exitTime: $exitTime)';
   }
 
   @override
@@ -335,28 +350,33 @@ class _$VisitorImpl implements _Visitor {
         (other.runtimeType == runtimeType &&
             other is _$VisitorImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.purpose, purpose) || other.purpose == purpose) &&
-            (identical(other.department, department) ||
-                other.department == department) &&
-            (identical(other.host, host) || other.host == host) &&
-            (identical(other.documentType, documentType) ||
-                other.documentType == documentType) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.contactNumber, contactNumber) ||
+                other.contactNumber == contactNumber) &&
             (identical(other.vehicleNumber, vehicleNumber) ||
                 other.vehicleNumber == vehicleNumber) &&
-            (identical(other.visitorPhotoPath, visitorPhotoPath) ||
-                other.visitorPhotoPath == visitorPhotoPath) &&
-            (identical(other.documentPath, documentPath) ||
-                other.documentPath == documentPath) &&
-            (identical(other.visitorCount, visitorCount) ||
-                other.visitorCount == visitorCount) &&
-            (identical(other.checkInTime, checkInTime) ||
-                other.checkInTime == checkInTime) &&
-            (identical(other.checkOutTime, checkOutTime) ||
-                other.checkOutTime == checkOutTime) &&
-            (identical(other.isCheckedIn, isCheckedIn) ||
-                other.isCheckedIn == isCheckedIn));
+            (identical(other.purposeOfVisit, purposeOfVisit) ||
+                other.purposeOfVisit == purposeOfVisit) &&
+            (identical(other.photoUrl, photoUrl) ||
+                other.photoUrl == photoUrl) &&
+            (identical(other.numberOfVisitors, numberOfVisitors) ||
+                other.numberOfVisitors == numberOfVisitors) &&
+            (identical(other.whomToMeet, whomToMeet) ||
+                other.whomToMeet == whomToMeet) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
+            (identical(other.documentType, documentType) ||
+                other.documentType == documentType) &&
+            (identical(other.documentUrl, documentUrl) ||
+                other.documentUrl == documentUrl) &&
+            (identical(other.sendNotification, sendNotification) ||
+                other.sendNotification == sendNotification) &&
+            (identical(other.isApproved, isApproved) ||
+                other.isApproved == isApproved) &&
+            (identical(other.entryTime, entryTime) ||
+                other.entryTime == entryTime) &&
+            (identical(other.exitTime, exitTime) ||
+                other.exitTime == exitTime));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -364,19 +384,20 @@ class _$VisitorImpl implements _Visitor {
   int get hashCode => Object.hash(
       runtimeType,
       name,
-      phone,
-      purpose,
-      department,
-      host,
-      documentType,
       address,
+      contactNumber,
       vehicleNumber,
-      visitorPhotoPath,
-      documentPath,
-      visitorCount,
-      checkInTime,
-      checkOutTime,
-      isCheckedIn);
+      purposeOfVisit,
+      photoUrl,
+      numberOfVisitors,
+      whomToMeet,
+      department,
+      documentType,
+      documentUrl,
+      sendNotification,
+      isApproved,
+      entryTime,
+      exitTime);
 
   /// Create a copy of Visitor
   /// with the given fields replaced by the non-null parameter values.
@@ -397,50 +418,53 @@ class _$VisitorImpl implements _Visitor {
 abstract class _Visitor implements Visitor {
   const factory _Visitor(
       {required final String name,
-      required final String phone,
-      required final String purpose,
-      required final String department,
-      required final String host,
-      required final String documentType,
-      final String? address,
+      required final String address,
+      required final String contactNumber,
       final String? vehicleNumber,
-      final String? visitorPhotoPath,
-      final String? documentPath,
-      final int visitorCount,
-      final DateTime? checkInTime,
-      final DateTime? checkOutTime,
-      final bool isCheckedIn}) = _$VisitorImpl;
+      required final String purposeOfVisit,
+      final String? photoUrl,
+      required final int numberOfVisitors,
+      required final String whomToMeet,
+      required final String department,
+      required final String documentType,
+      final String? documentUrl,
+      final bool sendNotification,
+      final bool isApproved,
+      final DateTime? entryTime,
+      final DateTime? exitTime}) = _$VisitorImpl;
 
   factory _Visitor.fromJson(Map<String, dynamic> json) = _$VisitorImpl.fromJson;
 
   @override
   String get name;
   @override
-  String get phone;
+  String get address;
   @override
-  String get purpose;
-  @override
-  String get department;
-  @override
-  String get host;
-  @override
-  String get documentType;
-  @override
-  String? get address;
+  String get contactNumber;
   @override
   String? get vehicleNumber;
   @override
-  String? get visitorPhotoPath;
+  String get purposeOfVisit;
   @override
-  String? get documentPath;
+  String? get photoUrl;
   @override
-  int get visitorCount;
+  int get numberOfVisitors;
   @override
-  DateTime? get checkInTime;
+  String get whomToMeet;
   @override
-  DateTime? get checkOutTime;
+  String get department;
   @override
-  bool get isCheckedIn;
+  String get documentType;
+  @override
+  String? get documentUrl;
+  @override
+  bool get sendNotification;
+  @override
+  bool get isApproved;
+  @override
+  DateTime? get entryTime;
+  @override
+  DateTime? get exitTime;
 
   /// Create a copy of Visitor
   /// with the given fields replaced by the non-null parameter values.

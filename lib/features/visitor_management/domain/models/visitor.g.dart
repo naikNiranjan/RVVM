@@ -9,39 +9,41 @@ part of 'visitor.dart';
 _$VisitorImpl _$$VisitorImplFromJson(Map<String, dynamic> json) =>
     _$VisitorImpl(
       name: json['name'] as String,
-      phone: json['phone'] as String,
-      purpose: json['purpose'] as String,
-      department: json['department'] as String,
-      host: json['host'] as String,
-      documentType: json['documentType'] as String,
-      address: json['address'] as String?,
+      address: json['address'] as String,
+      contactNumber: json['contactNumber'] as String,
       vehicleNumber: json['vehicleNumber'] as String?,
-      visitorPhotoPath: json['visitorPhotoPath'] as String?,
-      documentPath: json['documentPath'] as String?,
-      visitorCount: (json['visitorCount'] as num?)?.toInt() ?? 1,
-      checkInTime: json['checkInTime'] == null
+      purposeOfVisit: json['purposeOfVisit'] as String,
+      photoUrl: json['photoUrl'] as String?,
+      numberOfVisitors: (json['numberOfVisitors'] as num).toInt(),
+      whomToMeet: json['whomToMeet'] as String,
+      department: json['department'] as String,
+      documentType: json['documentType'] as String,
+      documentUrl: json['documentUrl'] as String?,
+      sendNotification: json['sendNotification'] as bool? ?? false,
+      isApproved: json['isApproved'] as bool? ?? false,
+      entryTime: json['entryTime'] == null
           ? null
-          : DateTime.parse(json['checkInTime'] as String),
-      checkOutTime: json['checkOutTime'] == null
+          : DateTime.parse(json['entryTime'] as String),
+      exitTime: json['exitTime'] == null
           ? null
-          : DateTime.parse(json['checkOutTime'] as String),
-      isCheckedIn: json['isCheckedIn'] as bool? ?? false,
+          : DateTime.parse(json['exitTime'] as String),
     );
 
 Map<String, dynamic> _$$VisitorImplToJson(_$VisitorImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'phone': instance.phone,
-      'purpose': instance.purpose,
-      'department': instance.department,
-      'host': instance.host,
-      'documentType': instance.documentType,
       'address': instance.address,
+      'contactNumber': instance.contactNumber,
       'vehicleNumber': instance.vehicleNumber,
-      'visitorPhotoPath': instance.visitorPhotoPath,
-      'documentPath': instance.documentPath,
-      'visitorCount': instance.visitorCount,
-      'checkInTime': instance.checkInTime?.toIso8601String(),
-      'checkOutTime': instance.checkOutTime?.toIso8601String(),
-      'isCheckedIn': instance.isCheckedIn,
+      'purposeOfVisit': instance.purposeOfVisit,
+      'photoUrl': instance.photoUrl,
+      'numberOfVisitors': instance.numberOfVisitors,
+      'whomToMeet': instance.whomToMeet,
+      'department': instance.department,
+      'documentType': instance.documentType,
+      'documentUrl': instance.documentUrl,
+      'sendNotification': instance.sendNotification,
+      'isApproved': instance.isApproved,
+      'entryTime': instance.entryTime?.toIso8601String(),
+      'exitTime': instance.exitTime?.toIso8601String(),
     };

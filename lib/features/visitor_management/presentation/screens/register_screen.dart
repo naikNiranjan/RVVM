@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/visitor_registration_form.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -7,10 +8,10 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
+        title: const Text('Register Visitor'),
       ),
-      body: const Center(
-        child: Text('Register Screen Content'),
+      body: const SingleChildScrollView(
+        child: VisitorRegistrationForm(),
       ),
     );
   }
