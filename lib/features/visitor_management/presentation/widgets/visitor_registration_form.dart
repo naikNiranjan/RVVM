@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/route_utils.dart';
 import '../../domain/models/visitor.dart';
 import '../providers/visitor_form_provider.dart';
 import '../widgets/visitor_additional_details_form.dart';
+import '../../../../core/widgets/base_screen.dart';
 
 class VisitorRegistrationForm extends ConsumerStatefulWidget {
   final void Function(Visitor visitor)? onSubmitted;
@@ -28,6 +30,8 @@ class _VisitorRegistrationFormState
   final _vehicleController = TextEditingController();
   final _purposeController = TextEditingController();
   final _emailController = TextEditingController();
+  final _emergencyNameController = TextEditingController();
+  final _emergencyContactController = TextEditingController();
 
   @override
   void dispose() {
@@ -37,6 +41,8 @@ class _VisitorRegistrationFormState
     _vehicleController.dispose();
     _purposeController.dispose();
     _emailController.dispose();
+    _emergencyNameController.dispose();
+    _emergencyContactController.dispose();
     super.dispose();
   }
 
@@ -94,6 +100,16 @@ class _VisitorRegistrationFormState
     return null;
   }
 
+  String? _validateEmergencyContact(String? value) {
+    if (value == null || value.isEmpty) {
+      return null; // Optional field
+    }
+    if (value.length != 10) {
+      return 'Contact number must be 10 digits';
+    }
+    return null;
+  }
+
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       final visitor = Visitor(
@@ -109,15 +125,20 @@ class _VisitorRegistrationFormState
         department: '',
         documentType: '',
         entryTime: DateTime.now(),
+        emergencyContactName: _emergencyNameController.text.isEmpty
+            ? null
+            : _emergencyNameController.text,
+        emergencyContactNumber: _emergencyContactController.text.isEmpty
+            ? null
+            : _emergencyContactController.text,
       );
 
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => Scaffold(
-            appBar: AppBar(
-              title: const Text('Additional Details'),
-            ),
+        RouteUtils.noAnimationRoute(
+          BaseScreen(
+            title: 'Additional Details',
+            showBackButton: true,
             body: SingleChildScrollView(
               child: VisitorAdditionalDetailsForm(
                 visitor: visitor,
@@ -247,6 +268,34 @@ class _VisitorRegistrationFormState
               prefixIcon: Icons.assignment_outlined,
               validator: _validatePurpose,
               maxLines: 2,
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Emergency Contact (Optional)',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 16),
+            _buildInputField(
+              controller: _emergencyNameController,
+              label: 'Emergency Contact Name',
+              prefixIcon: Icons.person_outline,
+              hintText: 'Enter emergency contact name',
+            ),
+            const SizedBox(height: 16),
+            _buildInputField(
+              controller: _emergencyContactController,
+              label: 'Emergency Contact Number',
+              prefixIcon: Icons.phone_outlined,
+              validator: _validateEmergencyContact,
+              keyboardType: TextInputType.phone,
+              hintText: 'Enter emergency contact number',
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(10),
+              ],
             ),
             const SizedBox(height: 24),
             SizedBox(

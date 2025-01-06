@@ -32,6 +32,11 @@ mixin _$Visitor {
   String get department => throw _privateConstructorUsedError;
   String get documentType => throw _privateConstructorUsedError;
   String? get documentUrl => throw _privateConstructorUsedError;
+  String? get emergencyContactName => throw _privateConstructorUsedError;
+  String? get emergencyContactNumber => throw _privateConstructorUsedError;
+  String? get cabProvider => throw _privateConstructorUsedError;
+  String? get driverName => throw _privateConstructorUsedError;
+  String? get driverContact => throw _privateConstructorUsedError;
   bool get sendNotification => throw _privateConstructorUsedError;
   bool get isApproved => throw _privateConstructorUsedError;
   DateTime? get entryTime => throw _privateConstructorUsedError;
@@ -64,6 +69,11 @@ abstract class $VisitorCopyWith<$Res> {
       String department,
       String documentType,
       String? documentUrl,
+      String? emergencyContactName,
+      String? emergencyContactNumber,
+      String? cabProvider,
+      String? driverName,
+      String? driverContact,
       bool sendNotification,
       bool isApproved,
       DateTime? entryTime,
@@ -97,6 +107,11 @@ class _$VisitorCopyWithImpl<$Res, $Val extends Visitor>
     Object? department = null,
     Object? documentType = null,
     Object? documentUrl = freezed,
+    Object? emergencyContactName = freezed,
+    Object? emergencyContactNumber = freezed,
+    Object? cabProvider = freezed,
+    Object? driverName = freezed,
+    Object? driverContact = freezed,
     Object? sendNotification = null,
     Object? isApproved = null,
     Object? entryTime = freezed,
@@ -151,6 +166,26 @@ class _$VisitorCopyWithImpl<$Res, $Val extends Visitor>
           ? _value.documentUrl
           : documentUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      emergencyContactName: freezed == emergencyContactName
+          ? _value.emergencyContactName
+          : emergencyContactName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactNumber: freezed == emergencyContactNumber
+          ? _value.emergencyContactNumber
+          : emergencyContactNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cabProvider: freezed == cabProvider
+          ? _value.cabProvider
+          : cabProvider // ignore: cast_nullable_to_non_nullable
+              as String?,
+      driverName: freezed == driverName
+          ? _value.driverName
+          : driverName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      driverContact: freezed == driverContact
+          ? _value.driverContact
+          : driverContact // ignore: cast_nullable_to_non_nullable
+              as String?,
       sendNotification: null == sendNotification
           ? _value.sendNotification
           : sendNotification // ignore: cast_nullable_to_non_nullable
@@ -191,6 +226,11 @@ abstract class _$$VisitorImplCopyWith<$Res> implements $VisitorCopyWith<$Res> {
       String department,
       String documentType,
       String? documentUrl,
+      String? emergencyContactName,
+      String? emergencyContactNumber,
+      String? cabProvider,
+      String? driverName,
+      String? driverContact,
       bool sendNotification,
       bool isApproved,
       DateTime? entryTime,
@@ -222,6 +262,11 @@ class __$$VisitorImplCopyWithImpl<$Res>
     Object? department = null,
     Object? documentType = null,
     Object? documentUrl = freezed,
+    Object? emergencyContactName = freezed,
+    Object? emergencyContactNumber = freezed,
+    Object? cabProvider = freezed,
+    Object? driverName = freezed,
+    Object? driverContact = freezed,
     Object? sendNotification = null,
     Object? isApproved = null,
     Object? entryTime = freezed,
@@ -276,6 +321,26 @@ class __$$VisitorImplCopyWithImpl<$Res>
           ? _value.documentUrl
           : documentUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      emergencyContactName: freezed == emergencyContactName
+          ? _value.emergencyContactName
+          : emergencyContactName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactNumber: freezed == emergencyContactNumber
+          ? _value.emergencyContactNumber
+          : emergencyContactNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cabProvider: freezed == cabProvider
+          ? _value.cabProvider
+          : cabProvider // ignore: cast_nullable_to_non_nullable
+              as String?,
+      driverName: freezed == driverName
+          ? _value.driverName
+          : driverName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      driverContact: freezed == driverContact
+          ? _value.driverContact
+          : driverContact // ignore: cast_nullable_to_non_nullable
+              as String?,
       sendNotification: null == sendNotification
           ? _value.sendNotification
           : sendNotification // ignore: cast_nullable_to_non_nullable
@@ -312,6 +377,11 @@ class _$VisitorImpl implements _Visitor {
       required this.department,
       required this.documentType,
       this.documentUrl,
+      this.emergencyContactName,
+      this.emergencyContactNumber,
+      this.cabProvider,
+      this.driverName,
+      this.driverContact,
       this.sendNotification = false,
       this.isApproved = false,
       this.entryTime,
@@ -345,6 +415,16 @@ class _$VisitorImpl implements _Visitor {
   @override
   final String? documentUrl;
   @override
+  final String? emergencyContactName;
+  @override
+  final String? emergencyContactNumber;
+  @override
+  final String? cabProvider;
+  @override
+  final String? driverName;
+  @override
+  final String? driverContact;
+  @override
   @JsonKey()
   final bool sendNotification;
   @override
@@ -357,7 +437,7 @@ class _$VisitorImpl implements _Visitor {
 
   @override
   String toString() {
-    return 'Visitor(name: $name, address: $address, contactNumber: $contactNumber, email: $email, vehicleNumber: $vehicleNumber, purposeOfVisit: $purposeOfVisit, photoUrl: $photoUrl, numberOfVisitors: $numberOfVisitors, whomToMeet: $whomToMeet, department: $department, documentType: $documentType, documentUrl: $documentUrl, sendNotification: $sendNotification, isApproved: $isApproved, entryTime: $entryTime, exitTime: $exitTime)';
+    return 'Visitor(name: $name, address: $address, contactNumber: $contactNumber, email: $email, vehicleNumber: $vehicleNumber, purposeOfVisit: $purposeOfVisit, photoUrl: $photoUrl, numberOfVisitors: $numberOfVisitors, whomToMeet: $whomToMeet, department: $department, documentType: $documentType, documentUrl: $documentUrl, emergencyContactName: $emergencyContactName, emergencyContactNumber: $emergencyContactNumber, cabProvider: $cabProvider, driverName: $driverName, driverContact: $driverContact, sendNotification: $sendNotification, isApproved: $isApproved, entryTime: $entryTime, exitTime: $exitTime)';
   }
 
   @override
@@ -386,6 +466,16 @@ class _$VisitorImpl implements _Visitor {
                 other.documentType == documentType) &&
             (identical(other.documentUrl, documentUrl) ||
                 other.documentUrl == documentUrl) &&
+            (identical(other.emergencyContactName, emergencyContactName) ||
+                other.emergencyContactName == emergencyContactName) &&
+            (identical(other.emergencyContactNumber, emergencyContactNumber) ||
+                other.emergencyContactNumber == emergencyContactNumber) &&
+            (identical(other.cabProvider, cabProvider) ||
+                other.cabProvider == cabProvider) &&
+            (identical(other.driverName, driverName) ||
+                other.driverName == driverName) &&
+            (identical(other.driverContact, driverContact) ||
+                other.driverContact == driverContact) &&
             (identical(other.sendNotification, sendNotification) ||
                 other.sendNotification == sendNotification) &&
             (identical(other.isApproved, isApproved) ||
@@ -398,24 +488,30 @@ class _$VisitorImpl implements _Visitor {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      name,
-      address,
-      contactNumber,
-      email,
-      vehicleNumber,
-      purposeOfVisit,
-      photoUrl,
-      numberOfVisitors,
-      whomToMeet,
-      department,
-      documentType,
-      documentUrl,
-      sendNotification,
-      isApproved,
-      entryTime,
-      exitTime);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        name,
+        address,
+        contactNumber,
+        email,
+        vehicleNumber,
+        purposeOfVisit,
+        photoUrl,
+        numberOfVisitors,
+        whomToMeet,
+        department,
+        documentType,
+        documentUrl,
+        emergencyContactName,
+        emergencyContactNumber,
+        cabProvider,
+        driverName,
+        driverContact,
+        sendNotification,
+        isApproved,
+        entryTime,
+        exitTime
+      ]);
 
   /// Create a copy of Visitor
   /// with the given fields replaced by the non-null parameter values.
@@ -447,6 +543,11 @@ abstract class _Visitor implements Visitor {
       required final String department,
       required final String documentType,
       final String? documentUrl,
+      final String? emergencyContactName,
+      final String? emergencyContactNumber,
+      final String? cabProvider,
+      final String? driverName,
+      final String? driverContact,
       final bool sendNotification,
       final bool isApproved,
       final DateTime? entryTime,
@@ -478,6 +579,16 @@ abstract class _Visitor implements Visitor {
   String get documentType;
   @override
   String? get documentUrl;
+  @override
+  String? get emergencyContactName;
+  @override
+  String? get emergencyContactNumber;
+  @override
+  String? get cabProvider;
+  @override
+  String? get driverName;
+  @override
+  String? get driverContact;
   @override
   bool get sendNotification;
   @override

@@ -56,8 +56,8 @@ class DashboardCard extends StatelessWidget {
                     ),
                     child: Icon(
                       icon,
-                      color: AppTheme.cardIconColor,
-                      size: 26,
+                      size: 32,
+                      color: AppTheme.iconColor,
                     ),
                   ),
                   const SizedBox(height: 16),

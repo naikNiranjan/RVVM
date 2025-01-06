@@ -67,8 +67,18 @@ class _VisitorSuccessScreenState extends State<VisitorSuccessScreen>
       curve: const Interval(0.4, 1.0, curve: Curves.easeOutCubic),
     ));
 
-    _controller.forward();
+    _controller.forward().then((_) {
+      Future.delayed(const Duration(seconds: 1), () {
+        if (mounted) {
+          setState(() {
+            _showSuccessAnimation = false;
+          });
+        }
+      });
+    });
   }
+
+  bool _showSuccessAnimation = true;
 
   @override
   void dispose() {
@@ -87,17 +97,15 @@ class _VisitorSuccessScreenState extends State<VisitorSuccessScreen>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 32),
-              Lottie.asset(
-                'assets/animations/success.json',
-                width: 200,
-                height: 200,
-                repeat: false,
-                controller: _controller,
-                onLoaded: (composition) {
-                  _controller.duration = composition.duration;
-                  _controller.forward();
-                },
-              ),
+              if (_showSuccessAnimation)
+                Lottie.asset(
+                  'assets/animations/success.json',
+                  width: 200,
+                  height: 200,
+                  controller: _controller,
+                  repeat: false,
+                ),
+              if (!_showSuccessAnimation) const SizedBox(height: 200),
               const SizedBox(height: 24),
               FadeTransition(
                 opacity: _fadeInAnimation,

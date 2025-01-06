@@ -19,7 +19,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'RVVM',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.lightTheme.copyWith(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          },
+        ),
+      ),
       home: const MainScreen(),
     );
   }

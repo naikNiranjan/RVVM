@@ -2,22 +2,35 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  final bool showBackButton;
+
+  const CustomAppBar({
+    super.key,
+    this.showBackButton = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      leading: IconButton(
-        icon: const Icon(
-          Icons.menu,
-          color: AppTheme.primaryColor,
-        ),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-      ),
+      leading: showBackButton
+          ? IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: AppTheme.primaryColor,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            )
+          : IconButton(
+              icon: const Icon(
+                Icons.menu,
+                color: AppTheme.primaryColor,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),
       title: const Text(
         'RVVM',
         style: TextStyle(

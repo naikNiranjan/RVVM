@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/route_utils.dart';
 import '../screens/about_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/settings_screen.dart';
@@ -74,8 +75,8 @@ class AppDrawer extends StatelessWidget {
                     Navigator.pop(context);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProfileScreen(),
+                      RouteUtils.noAnimationRoute(
+                        const ProfileScreen(),
                       ),
                     );
                   },

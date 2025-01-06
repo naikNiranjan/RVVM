@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/route_utils.dart';
 import '../../domain/models/visitor.dart';
 import '../../domain/models/department_data.dart';
 import '../screens/visitor_success_screen.dart';
@@ -85,9 +86,10 @@ class _VisitorAdditionalDetailsFormState
       widget.onSubmitted?.call(updatedVisitor);
 
       // Navigate to success screen
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => VisitorSuccessScreen(
+      Navigator.pushReplacement(
+        context,
+        RouteUtils.noAnimationRoute(
+          VisitorSuccessScreen(
             visitor: updatedVisitor,
           ),
         ),

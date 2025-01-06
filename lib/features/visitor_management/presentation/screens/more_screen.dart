@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/app_drawer.dart';
+import '../../../../core/widgets/base_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(),
-      drawer: const AppDrawer(),
+    return BaseScreen(
+      title: 'More',
+      useCustomAppBar: true,
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: const [

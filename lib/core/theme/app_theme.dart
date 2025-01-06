@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Main theme color
-  static const primaryColor = Color(0xFF3A81F1);
-  static const backgroundColor = Color(0xFFEDF3FF);
-
-  // Card colors - different opacities of primary color
-  static const cardBackgroundColor = Color(0xFFF5F9FF);
-  static const cardIconColor = Color(0xFF3A81F1);
+  static const primaryColor = Color(0xFF2196F3); // Main blue color
+  static const cardBackgroundColor = Color(0xFFF5F5F5);
+  static const iconColor = primaryColor; // Use primary color for icons
+  static final secondaryButtonColor =
+      Colors.blue[50]; // Light blue for secondary buttons
+  static const secondaryButtonTextColor = primaryColor;
+  static final textGreyColor = Colors.grey[600];
+  static const cardIconColor = primaryColor;
 
   static ThemeData get lightTheme => ThemeData(
         primaryColor: primaryColor,
