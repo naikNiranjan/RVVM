@@ -9,6 +9,7 @@ class Visitor with _$Visitor {
     required String name,
     required String address,
     required String contactNumber,
+    required String email,
     String? vehicleNumber,
     required String purposeOfVisit,
     String? photoUrl,

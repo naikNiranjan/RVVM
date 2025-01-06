@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'dart:convert';
 import '../../domain/models/visitor.dart';
 import '../../../../core/theme/app_theme.dart';
 import 'package:lottie/lottie.dart';
@@ -20,6 +22,26 @@ class _VisitorSuccessScreenState extends State<VisitorSuccessScreen>
   late AnimationController _controller;
   late Animation<double> _fadeInAnimation;
   late Animation<Offset> _slideAnimation;
+
+  String get _visitorQrData {
+    final Map<String, dynamic> qrData = {
+      'name': widget.visitor.name,
+      'address': widget.visitor.address,
+      'contactNumber': widget.visitor.contactNumber,
+      'email': widget.visitor.email,
+      'vehicleNumber': widget.visitor.vehicleNumber,
+      'purposeOfVisit': widget.visitor.purposeOfVisit,
+      'numberOfVisitors': widget.visitor.numberOfVisitors,
+      'whomToMeet': widget.visitor.whomToMeet,
+      'department': widget.visitor.department,
+      'documentType': widget.visitor.documentType,
+      'entryTime': widget.visitor.entryTime?.toIso8601String(),
+      'visitorId': widget.visitor.entryTime?.millisecondsSinceEpoch
+          .toString()
+          .substring(5),
+    };
+    return json.encode(qrData);
+  }
 
   @override
   void initState() {
@@ -65,7 +87,6 @@ class _VisitorSuccessScreenState extends State<VisitorSuccessScreen>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 32),
-              // Success Animation
               Lottie.asset(
                 'assets/animations/success.json',
                 width: 200,
@@ -100,7 +121,36 @@ class _VisitorSuccessScreenState extends State<VisitorSuccessScreen>
                           color: Colors.grey[600],
                         ),
                       ),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 24),
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 10,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: QrImageView(
+                          data: _visitorQrData,
+                          version: QrVersions.auto,
+                          size: 200.0,
+                          backgroundColor: Colors.white,
+                          eyeStyle: const QrEyeStyle(
+                            eyeShape: QrEyeShape.square,
+                            color: AppTheme.primaryColor,
+                          ),
+                          dataModuleStyle: const QrDataModuleStyle(
+                            dataModuleShape: QrDataModuleShape.square,
+                            color: AppTheme.primaryColor,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
                       _buildDetailCard(
                         title: 'Visitor Details',
                         icon: Icons.person,
@@ -108,6 +158,7 @@ class _VisitorSuccessScreenState extends State<VisitorSuccessScreen>
                           DetailItem('Name', widget.visitor.name),
                           DetailItem('Address', widget.visitor.address),
                           DetailItem('Contact', widget.visitor.contactNumber),
+                          DetailItem('Email', widget.visitor.email),
                           if (widget.visitor.vehicleNumber != null)
                             DetailItem(
                                 'Vehicle', widget.visitor.vehicleNumber!),

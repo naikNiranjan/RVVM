@@ -27,6 +27,7 @@ class _VisitorRegistrationFormState
   final _contactController = TextEditingController();
   final _vehicleController = TextEditingController();
   final _purposeController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   void dispose() {
@@ -35,6 +36,7 @@ class _VisitorRegistrationFormState
     _contactController.dispose();
     _vehicleController.dispose();
     _purposeController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -72,12 +74,33 @@ class _VisitorRegistrationFormState
     return null;
   }
 
+  String? _validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter email address';
+    }
+    final emailRegex = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+      caseSensitive: false,
+    );
+    if (!emailRegex.hasMatch(value)) {
+      return 'Please enter a valid email address';
+    }
+    if (value.length > 254) {
+      return 'Email address is too long';
+    }
+    if (value.contains('..')) {
+      return 'Invalid email format';
+    }
+    return null;
+  }
+
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       final visitor = Visitor(
         name: _nameController.text,
         address: _addressController.text,
         contactNumber: _contactController.text,
+        email: _emailController.text,
         vehicleNumber:
             _vehicleController.text.isEmpty ? null : _vehicleController.text,
         purposeOfVisit: _purposeController.text,
@@ -166,6 +189,52 @@ class _VisitorRegistrationFormState
             ),
             const SizedBox(height: 16),
             _buildInputField(
+              controller: _emailController,
+              label: 'Email Address',
+              prefixIcon: Icons.email_outlined,
+              validator: _validateEmail,
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.next,
+              hintText: 'example@email.com',
+              onChanged: (value) {
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                labelText: 'Email Address',
+                hintText: 'example@email.com',
+                prefixIcon: Icon(
+                  Icons.email_outlined,
+                  color: AppTheme.primaryColor,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: AppTheme.cardBackgroundColor,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
+                helperText: 'Enter your valid email address',
+                helperStyle: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 12,
+                ),
+                suffixIcon: _emailController.text.isNotEmpty
+                    ? Icon(
+                        _validateEmail(_emailController.text) == null
+                            ? Icons.check_circle
+                            : Icons.error,
+                        color: _validateEmail(_emailController.text) == null
+                            ? Colors.green
+                            : Colors.red,
+                      )
+                    : null,
+              ),
+            ),
+            const SizedBox(height: 16),
+            _buildInputField(
               controller: _vehicleController,
               label: 'Vehicle Number (Optional)',
               prefixIcon: Icons.directions_car_outlined,
@@ -216,6 +285,10 @@ class _VisitorRegistrationFormState
     TextInputType? keyboardType,
     List<TextInputFormatter>? inputFormatters,
     int? maxLines,
+    String? hintText,
+    TextInputAction? textInputAction,
+    ValueChanged<String>? onChanged,
+    InputDecoration? decoration,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -228,27 +301,35 @@ class _VisitorRegistrationFormState
       ),
       child: TextFormField(
         controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          prefixIcon: Icon(
-            prefixIcon,
-            color: AppTheme.primaryColor,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          filled: true,
-          fillColor: AppTheme.cardBackgroundColor,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-        ),
+        decoration: decoration ??
+            InputDecoration(
+              labelText: label,
+              hintText: hintText,
+              prefixIcon: Icon(
+                prefixIcon,
+                color: AppTheme.primaryColor,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: AppTheme.cardBackgroundColor,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+            ),
         validator: validator,
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
         maxLines: maxLines ?? 1,
+        textInputAction: textInputAction,
+        onChanged: onChanged,
+        style: const TextStyle(
+          fontSize: 16,
+        ),
+        cursorColor: AppTheme.primaryColor,
       ),
     );
   }

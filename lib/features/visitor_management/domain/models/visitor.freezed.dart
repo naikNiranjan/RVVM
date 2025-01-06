@@ -23,6 +23,7 @@ mixin _$Visitor {
   String get name => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get contactNumber => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String? get vehicleNumber => throw _privateConstructorUsedError;
   String get purposeOfVisit => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ abstract class $VisitorCopyWith<$Res> {
       {String name,
       String address,
       String contactNumber,
+      String email,
       String? vehicleNumber,
       String purposeOfVisit,
       String? photoUrl,
@@ -86,6 +88,7 @@ class _$VisitorCopyWithImpl<$Res, $Val extends Visitor>
     Object? name = null,
     Object? address = null,
     Object? contactNumber = null,
+    Object? email = null,
     Object? vehicleNumber = freezed,
     Object? purposeOfVisit = null,
     Object? photoUrl = freezed,
@@ -111,6 +114,10 @@ class _$VisitorCopyWithImpl<$Res, $Val extends Visitor>
       contactNumber: null == contactNumber
           ? _value.contactNumber
           : contactNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       vehicleNumber: freezed == vehicleNumber
           ? _value.vehicleNumber
@@ -175,6 +182,7 @@ abstract class _$$VisitorImplCopyWith<$Res> implements $VisitorCopyWith<$Res> {
       {String name,
       String address,
       String contactNumber,
+      String email,
       String? vehicleNumber,
       String purposeOfVisit,
       String? photoUrl,
@@ -205,6 +213,7 @@ class __$$VisitorImplCopyWithImpl<$Res>
     Object? name = null,
     Object? address = null,
     Object? contactNumber = null,
+    Object? email = null,
     Object? vehicleNumber = freezed,
     Object? purposeOfVisit = null,
     Object? photoUrl = freezed,
@@ -230,6 +239,10 @@ class __$$VisitorImplCopyWithImpl<$Res>
       contactNumber: null == contactNumber
           ? _value.contactNumber
           : contactNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       vehicleNumber: freezed == vehicleNumber
           ? _value.vehicleNumber
@@ -290,6 +303,7 @@ class _$VisitorImpl implements _Visitor {
       {required this.name,
       required this.address,
       required this.contactNumber,
+      required this.email,
       this.vehicleNumber,
       required this.purposeOfVisit,
       this.photoUrl,
@@ -312,6 +326,8 @@ class _$VisitorImpl implements _Visitor {
   final String address;
   @override
   final String contactNumber;
+  @override
+  final String email;
   @override
   final String? vehicleNumber;
   @override
@@ -341,7 +357,7 @@ class _$VisitorImpl implements _Visitor {
 
   @override
   String toString() {
-    return 'Visitor(name: $name, address: $address, contactNumber: $contactNumber, vehicleNumber: $vehicleNumber, purposeOfVisit: $purposeOfVisit, photoUrl: $photoUrl, numberOfVisitors: $numberOfVisitors, whomToMeet: $whomToMeet, department: $department, documentType: $documentType, documentUrl: $documentUrl, sendNotification: $sendNotification, isApproved: $isApproved, entryTime: $entryTime, exitTime: $exitTime)';
+    return 'Visitor(name: $name, address: $address, contactNumber: $contactNumber, email: $email, vehicleNumber: $vehicleNumber, purposeOfVisit: $purposeOfVisit, photoUrl: $photoUrl, numberOfVisitors: $numberOfVisitors, whomToMeet: $whomToMeet, department: $department, documentType: $documentType, documentUrl: $documentUrl, sendNotification: $sendNotification, isApproved: $isApproved, entryTime: $entryTime, exitTime: $exitTime)';
   }
 
   @override
@@ -353,6 +369,7 @@ class _$VisitorImpl implements _Visitor {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.contactNumber, contactNumber) ||
                 other.contactNumber == contactNumber) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.vehicleNumber, vehicleNumber) ||
                 other.vehicleNumber == vehicleNumber) &&
             (identical(other.purposeOfVisit, purposeOfVisit) ||
@@ -386,6 +403,7 @@ class _$VisitorImpl implements _Visitor {
       name,
       address,
       contactNumber,
+      email,
       vehicleNumber,
       purposeOfVisit,
       photoUrl,
@@ -420,6 +438,7 @@ abstract class _Visitor implements Visitor {
       {required final String name,
       required final String address,
       required final String contactNumber,
+      required final String email,
       final String? vehicleNumber,
       required final String purposeOfVisit,
       final String? photoUrl,
@@ -441,6 +460,8 @@ abstract class _Visitor implements Visitor {
   String get address;
   @override
   String get contactNumber;
+  @override
+  String get email;
   @override
   String? get vehicleNumber;
   @override
