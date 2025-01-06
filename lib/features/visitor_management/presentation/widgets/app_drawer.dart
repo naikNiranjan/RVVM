@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../screens/about_screen.dart';
+import '../screens/profile_screen.dart';
+import '../screens/settings_screen.dart';
+import '../screens/help_support_screen.dart';
+import '../screens/emergency_contacts_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -7,86 +12,191 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Column(
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
               color: AppTheme.primaryColor,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.white,
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
                   child: Image.asset(
                     'assets/images/college_logo.png',
-                    width: 40,
-                    height: 40,
+                    width: 50,
+                    height: 50,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(width: 16),
                 const Text(
                   'RVVM',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 32,
                     fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                  'Visitor Management System',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
+                    letterSpacing: 1.2,
                   ),
                 ),
               ],
             ),
           ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.pop(context); // Close drawer
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.home_outlined,
+                  title: 'Home',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  },
+                ),
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.person_outline,
+                  title: 'Profile',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileScreen(),
+                      ),
+                    );
+                  },
+                ),
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.emergency_outlined,
+                  title: 'Emergency Contact',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EmergencyContactsScreen(),
+                      ),
+                    );
+                  },
+                ),
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.settings_outlined,
+                  title: 'Settings',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsScreen(),
+                      ),
+                    );
+                  },
+                ),
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.help_outline,
+                  title: 'Help & Support',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HelpSupportScreen(),
+                      ),
+                    );
+                  },
+                ),
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.info_outline,
+                  title: 'About',
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AboutScreen(),
+                      ),
+                    );
+                  },
+                ),
+                const Divider(height: 1),
+                _buildDrawerItem(
+                  context: context,
+                  icon: Icons.logout,
+                  title: 'Logout',
+                  onTap: () {
+                    Navigator.pop(context);
+                    // Add logout functionality
+                  },
+                  isDestructive: true,
+                ),
+              ],
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () {
-              Navigator.pop(context);
-              // Add navigation to settings page
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text('Help & Support'),
-            onTap: () {
-              Navigator.pop(context);
-              // Add navigation to help page
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('About'),
-            onTap: () {
-              Navigator.pop(context);
-              // Add navigation to about page
-            },
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
-            onTap: () {
-              Navigator.pop(context);
-              // Add logout functionality
-            },
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              'Version 1.0.0',
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 12,
+              ),
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildDrawerItem({
+    required BuildContext context,
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+    bool isDestructive = false,
+  }) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                size: 24,
+                color: isDestructive ? Colors.red : AppTheme.primaryColor,
+              ),
+              const SizedBox(width: 16),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: isDestructive ? Colors.red : Colors.black87,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
